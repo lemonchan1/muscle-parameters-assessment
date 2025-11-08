@@ -1,0 +1,47 @@
+run:
+  mode: 'train'
+  gpu: '3'
+transforms: none
+dataset:
+  class_name: "fifth"
+  input_size: 512
+  num_classes: 9
+  img_ext: ".png"
+  mask_ext: ".png"
+data_loader:
+  train:
+    batch_size: 16
+    shuffle: true
+    num_workers: 8
+    pin_memory: true
+    drop_last: False
+  validation:
+    batch_size: 16
+    shuffle: false
+    num_workers: 8
+    pin_memory: true
+    drop_last: False
+  test:
+    batch_size: 16
+    shuffle: false
+    num_workers: 4
+    pin_memory: false
+    drop_last: False
+training:
+  optimizer:
+    name: 'Adam'
+    params:
+      lr: 0.0001
+  scheduler:
+    factor: 0.5
+    patience: 10
+  epochs: 200
+model:
+  save_dir: 'saved_models/fifth_unetpp'
+  load_weights: false
+  name: 'NestedUNet'
+  # 模型初始化参数
+  params:
+    num_classes: 9
+    input_channels: 3
+# preprocess:
