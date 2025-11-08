@@ -3,7 +3,7 @@ import numpy as np
 import nibabel as nib
 import pandas as pd
 from tqdm import tqdm
-from config import data_path, label_path, result_path
+from config import data_path, label_path, result_path, dcm_path
 
 def load_slice_ranges():
     """加载切片范围配置文件"""
